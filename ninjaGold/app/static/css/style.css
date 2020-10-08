@@ -1,0 +1,87 @@
+*{
+    background-color: darkgrey;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* border: 1px dashed red; */
+}
+
+#count{
+    border: 1px solid black;
+    width: 300px;
+    padding: 20px;
+    font-size: 40px;
+}
+
+h1{
+    font-size: 60px;
+    color: darkslategrey;
+}
+
+body{
+    text-align: center;
+}
+
+p{
+    max-width: 300px;
+}
+
+#header{
+    display: flex;
+    justify-content: center;
+}
+
+#cryptos{
+    display: flex;
+    justify-content: space-around;
+}
+
+#bitcoin, #rpl, #ethereum, #chainlink{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img{
+    width: 150px;
+    margin: 10px;
+}
+
+button{
+    text-decoration: none;
+    width: 100px;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    font-size: 20px;
+    box-shadow: 5px 3px white;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+
+.gray{
+    color: gray;
+}
+
+#activity{
+    margin: 0 auto;
+    overflow: scroll;
+    width: 600px;
+    height: 200px;
+    display:flex;
+    flex-direction: column-reverse;
+}
+
+#activity p{
+    max-width: 500px;
+}
+
+h2{
+    margin-top: 20px;
+}

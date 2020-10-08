@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <h1>Crypto Hunt</h1>
+    <h5>Click on a device below to mine some crypto currency!</h5>
+    <div id="header">
+        <div id="count">Total Crypto: {{request.session.count}}</div>
+        
+        <p>(This is a simple representation of how the Django framework utilizes a user's session information. It is a
+            game themed on cryptocurency but has no real connection to crypto)</p>        
+    </div>
+
+    <div id="cryptos">
+        <form id="bitcoin" action='/process_money' method="post">
+            {% csrf_token %}
+            <h2>Bitcoin</h2>
+            <h3>Mine between -10 and 2 Bitcoin</h3>
+            <img src="{% static '/img/bitcoin.png' %}">
+            <input type="hidden" name="crypto" value="bitcoin">
+            <button type="submit">Mine!</button>
+        </form>
+
+        <form id="ethereum" action="/process_money" method="post">
+            {% csrf_token %}
+            <h2>Ethereum</h2>
+            <h3>Mine between -100 and 100 Ethereum</h3>
+            <input type="hidden" name="crypto" value="ethereum">
+            <img src="{% static '/img/ethereum.png' %}">
+            <button type="submit">Mine!</button>
+        </form>
+
+        <form id="rpl" action="/process_money" method="post">
+            {% csrf_token %}
+            <h2>Ripple</h2>
+            <h3>Mine between -500 and 400 Ripple</h3>
+            <img src="{% static '/img/ripple.png' %}">
+            <input type="hidden" name="crypto" value="rpl">
+            <button type="submit">Mine!</button>
+        </form>
+
+        <form id="chainlink" action="/process_money" method="post">
+            {% csrf_token %}
+            <h2>Chainlink</h2>
+            <h3>Mine between -200 and 200 Bitcoin</h3>
+            <img src="{% static '/img/chainlink.png'%}">
+            <input type="hidden" name="crypto" value="chainlink">
+            <button type="submit">Mine!</button>
+        </form>
+    </div>
+
+    <h2>Activity Log:</h2>
+    <div id="activity">
+        
+        {% for val in request.session.log %}
+                {% if val.1 == 'green' %}
+                    <p class="green">{{val.0}}</p>
+
+                {% elif val.1 == 'red' %}
+                    <p class="red">{{val.0}}</p>
+                    
+                {% elif val.1 == 'gray' %}
+                    <p class="gray">{{val.0}}</p>
+            
+                {% endif %}
+            
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
